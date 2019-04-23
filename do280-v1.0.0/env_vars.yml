@@ -1,0 +1,41 @@
+email: jrigsbee@redhat.com
+report_email: jrigsbee@redhat.com
+output_dir: "/Users/jrigsbee/work/clusters/{{guid}}"
+repo_method: rhn
+install_bastion: true
+install_common: true
+install_opentlc_integration: false
+## Automatically deploy ocp4 cluster using the installer
+install_ocp4: true
+ocp4_installer_version: "v0.16.1"
+oc_client_version: "4.0.22"
+cluster_name: "do280-{{guid}}"
+
+## Install Authentication.
+## Valid options are none, htpasswd, ldap (and maybe in the future sso)
+## For LDAP a bindPassword needs to be passed via the command line
+install_idm: "none"
+
+### If you want a Key Pair name created and injected into the hosts,
+# set `set_env_authorized_key` to true and set the keyname in `env_authorized_key`
+# you can use the key used to create the environment or use your own self generated key
+# if you set "use_own_key" to false your PRIVATE key will be copied to the bastion. (This is {{key_name}})
+
+use_own_key: true
+env_authorized_key: "key{{guid}}"
+ansible_ssh_private_key_file: ~/.ssh/{{key_name}}
+set_env_authorized_key: true
+
+## Networking (AWS)
+subdomain_base_short: "{{guid}}"
+subdomain_base_suffix: ".{{env}}.nextcle.com"
+subdomain_base: "{{subdomain_base_short}}{{subdomain_base_suffix}}"
+
+## OCP 4 Environment Sizing
+master_instance_type: "m4.xlarge"
+master_instance_count: 3
+worker_instance_type: "m4.xlarge"
+worker_instance_count: 2
+
+# Enable Default Workloads. REQUIRES Ansible 2.7+ on the deployer host
+default_workloads: []
