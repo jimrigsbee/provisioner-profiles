@@ -1,10 +1,22 @@
 email: jrigsbee@redhat.com
 report_email: jrigsbee@redhat.com
-output_dir: "/Users/jrigsbee/work/clusters/{{guid}}"
+output_dir: "/root/work/clusters/{{guid}}"
 repo_method: rhn
 install_bastion: true
 install_common: true
 install_opentlc_integration: false
+
+## If you want a JSON file specifying the cluster attributes,
+## set to true
+ocp_report: false
+
+## If you want to report a successful provisioning to an endpoint,
+## set the URL for the REST endpoint and the JSON file
+## will be posted to this endpoint
+## Be sure to set ocp_report to true
+ocp_notify_endpoint: http://provisioner.dev.nextcle.com/provision/api/v1.0/cluster/update/{{guid}}
+
+
 ## Automatically deploy ocp4 cluster using the installer
 install_ocp4: true
 ocp4_installer_version: "v0.16.1"
