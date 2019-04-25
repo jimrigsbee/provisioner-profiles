@@ -6,14 +6,9 @@ PROFILE=$4
 
 pushd ~
 if [ ! -d agnosticd ]; then
-  git clone https://github.com/redhat-cop/agnosticd
+  git clone https://github.com/jimrigsbee/agnosticd
   git checkout development
 fi
-popd
-
-mkdir -p work/clusters/${GUID}
-pushd ~/work/clusters/${GUID}
-cp ~/provisioner-profiles/${PROFILE}/env_vars.yml .
 popd
 
 pushd ~/agnosticd

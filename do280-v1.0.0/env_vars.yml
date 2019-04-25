@@ -14,7 +14,7 @@ ocp_report: false
 ## set the URL for the REST endpoint and the JSON file
 ## will be posted to this endpoint
 ## Be sure to set ocp_report to true
-ocp_notify_endpoint: http://provisioner.dev.nextcle.com/provision/api/v1.0/cluster/update/{{guid}}
+ocp_notify_endpoint: http://provisioner.dev.nextcle.com/provision/api/v1.0/cluster/created/{{guid}}
 
 
 ## Automatically deploy ocp4 cluster using the installer
